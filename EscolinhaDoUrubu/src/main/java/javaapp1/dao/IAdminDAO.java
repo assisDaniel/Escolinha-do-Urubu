@@ -6,7 +6,7 @@ package javaapp1.dao;
 import javaapp1.domain.Cliente;
 /**
  *
- * @author neuma
+ * @author daniel
  */
 public interface IAdminDAO {
     

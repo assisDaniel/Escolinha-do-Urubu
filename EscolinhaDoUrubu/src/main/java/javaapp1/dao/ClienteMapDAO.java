@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author neuma
+ * @author daniel
  */
 public class ClienteMapDAO implements IClienteDAO{
     private Map<String, Cliente> map;

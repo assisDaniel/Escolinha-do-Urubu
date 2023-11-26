@@ -5,7 +5,7 @@
 package javaapp1.domain; 
 /**
  *
- * @author neuma
+ * @author daniel
  */
 public class Cliente {
     

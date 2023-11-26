@@ -6,7 +6,7 @@ package javaapp1.escolinhadourubu;
 
 /**
  *
- * @author neuma
+ * @author tarci
  */
 public class EscolinhaDoUrubu {
 

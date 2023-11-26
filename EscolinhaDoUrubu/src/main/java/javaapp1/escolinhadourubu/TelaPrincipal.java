@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javaapp1.escolinhadourubu.Tela_Admin;
 /**
  *
- * @author neuma
+ * @author daniel
  */
 public class TelaPrincipal extends javax.swing.JFrame{
     public DefaultTableModel modelo= new DefaultTableModel();

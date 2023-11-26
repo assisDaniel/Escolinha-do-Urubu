@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javaapp1.domain.Cliente;
 /**
  *
- * @author neuma
+ * @author daniel
  */
 public class AdminListDAO implements IAdminDAO {
     private ArrayList<Cliente> list;
