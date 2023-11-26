@@ -12,7 +12,11 @@ public class Cliente {
     private String nome, telefone, esporte, quadra, horario, formPag, senha;
     private Integer qtdHoras;
     
-    public Cliente(){};
+    public Cliente(){}
+    public Cliente(String quadra, String horario){
+        this.quadra= quadra;
+        this.horario= horario;
+    }
     public Cliente(String nome, String telefone, String esporte, String quadra, String horario, String qtdHoras, String formPag){
         this.nome= nome;
         this.telefone= telefone;

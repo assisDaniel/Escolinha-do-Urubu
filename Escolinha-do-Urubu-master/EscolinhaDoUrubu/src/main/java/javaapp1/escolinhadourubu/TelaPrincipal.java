@@ -47,7 +47,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         comboBoxFormaPag = new javax.swing.JComboBox<>();
         botaoFut = new javax.swing.JRadioButton();
         botaoFutVo = new javax.swing.JRadioButton();
-        txtQuadra = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         botaoUpdate = new javax.swing.JButton();
@@ -58,6 +57,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
+        comboBoxQuadra = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -65,6 +65,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDesktopPane1.setDoubleBuffered(true);
 
         jLabel1.setText("Esporte::");
 
@@ -96,12 +98,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         botaoFutVo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoFutVoActionPerformed(evt);
-            }
-        });
-
-        txtQuadra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuadraActionPerformed(evt);
             }
         });
 
@@ -176,6 +172,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        comboBoxQuadra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Quadra 1", "Quadra 2", "Quadra 3" }));
+        comboBoxQuadra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxQuadraActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -186,7 +189,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayer(comboBoxFormaPag, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botaoFut, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botaoFutVo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtQuadra, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(botaoUpdate, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -196,6 +198,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(comboBoxQuadra, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -221,8 +224,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxQuadra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(334, 334, 334)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(comboBoxFormaPag, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +291,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(comboBoxFormaPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(comboBoxQuadra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(44, 44, 44))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -383,7 +386,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        txtTelefone.setText("");
        if(botaoFut.isSelected()) botaoFut.doClick();
        if(botaoFutVo.isSelected()) botaoFutVo.doClick();
-       txtQuadra.setText("");
+       comboBoxQuadra.setSelectedIndex(0);
        comboBoxHorario.setSelectedIndex(0);
        spinnerQtdHoras.setValue(0);
        comboBoxFormaPag.setSelectedIndex(0);
@@ -404,13 +407,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void botaoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaveActionPerformed
         String nome= txtNome.getText();
         String telefone= txtTelefone.getText();
-        String esporte;
+        String esporte= null;
         if(botaoFut.isSelected()) esporte= botaoFut.getText();
-        else esporte= botaoFutVo.getText();
-        String quadra= txtQuadra.getText();
-        String horario = comboBoxHorario.getSelectedItem().toString();
-        String qtdHoras= spinnerQtdHoras.getValue().toString();
-        String formPag = comboBoxFormaPag.getSelectedItem().toString();
+        if (botaoFutVo.isSelected()) esporte= botaoFutVo.getText();
+        
+        String quadra;
+        if(comboBoxQuadra.getSelectedIndex() == 0){
+            quadra= null;
+        }else quadra= comboBoxQuadra.getSelectedItem().toString();
+        
+        String horario;
+        if(comboBoxHorario.getSelectedIndex() == 0) horario= null;
+        else horario = comboBoxHorario.getSelectedItem().toString();
+        
+        String qtdHoras;
+        if(spinnerQtdHoras.getValue().toString().equals("0")) qtdHoras= null;
+        else qtdHoras= spinnerQtdHoras.getValue().toString();
+        
+        String formPag;
+        if(comboBoxFormaPag.getSelectedIndex() == 0) formPag= null;
+        else formPag = comboBoxFormaPag.getSelectedItem().toString();
         
         if(!isCamposValidos(nome, telefone, esporte, quadra, horario, qtdHoras, formPag)){
             JOptionPane.showMessageDialog(this, "Existem campos não preenchidos!");
@@ -463,7 +479,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String esporte;
             if(botaoFut.isSelected()) esporte= botaoFut.getText();
             else esporte= botaoFutVo.getText();
-            String quadra= txtQuadra.getText();
+            String quadra= comboBoxQuadra.getSelectedItem().toString();
             String horario = comboBoxHorario.getSelectedItem().toString();
             String qtdHoras= spinnerQtdHoras.getValue().toString();
             String formPag = comboBoxFormaPag.getSelectedItem().toString();
@@ -507,9 +523,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoRemoveActionPerformed
 
-    private void txtQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuadraActionPerformed
+    private void comboBoxQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxQuadraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuadraActionPerformed
+    }//GEN-LAST:event_comboBoxQuadraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -556,6 +572,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboBoxFormaPag;
     private javax.swing.JComboBox<String> comboBoxHorario;
+    private javax.swing.JComboBox<String> comboBoxQuadra;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -573,7 +590,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JSpinner spinnerQtdHoras;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtQuadra;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

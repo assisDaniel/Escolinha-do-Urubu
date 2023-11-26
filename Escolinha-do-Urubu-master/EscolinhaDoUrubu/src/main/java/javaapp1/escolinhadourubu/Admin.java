@@ -123,16 +123,19 @@ public class Admin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (validarSenha("urubu")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Parabéns");
+        if (validarSenha("urubu") && validarNome("admin")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Acessando...");
             Tela_Admin tela = new Tela_Admin();
             tela.setVisible(true);
-            
-        } else {
+            dispose();
+        } else if(!validarSenha("urubu")){
             javax.swing.JOptionPane.showMessageDialog(this, "Senha incorreta");
+        } else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuário incorreto");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -143,6 +146,11 @@ public class Admin extends javax.swing.JFrame {
         return senhaDigitada.equals(senhaCorreta);
     }
     
+    private boolean validarNome(String nomeCorreto){
+        String nome = jTextField6.getText();
+
+        return nome.equals(nomeCorreto);
+    }
     /**
      * @param args the command line arguments
      */

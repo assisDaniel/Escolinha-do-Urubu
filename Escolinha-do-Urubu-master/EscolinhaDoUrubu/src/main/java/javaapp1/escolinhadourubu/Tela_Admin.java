@@ -15,12 +15,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Tela_Admin extends javax.swing.JFrame {
     public DefaultTableModel modelo= new DefaultTableModel();
+    private IClienteDAO clienteDAO= new ClienteMapDAO();
     
     /**
      * Creates new form NewJFrame
      */
     public Tela_Admin() {
         initComponents();
+        initComponents2();
     }
 
     /**
@@ -44,14 +46,11 @@ public class Tela_Admin extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2"
@@ -166,6 +165,7 @@ public class Tela_Admin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void limparCampos(){
        jTextField1.setText("");
@@ -195,32 +195,22 @@ public class Tela_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nome = jTextField1.getText();
+        String quadra = jTextField1.getText();
         String horario = jTextField2.getText();
-        int linha = jTable1.getSelectedRow();
         
-        if(linha >= 0){
-            if(!isCamposValidos(nome, horario)){
-                JOptionPane.showMessageDialog(this, "Existem campos não preenchidos!");
-                return;
-            }            
-            //Cliente clienteNew = new Cliente(nome, horario, qtdHoras, formPag);
-            //this.clienteDAO.atualizar(jTable1.getValueAt(linha, 1).toString(), clienteNew);
+        Cliente clienteNew = new Cliente(quadra, horario);
+        this.clienteDAO.salvar(clienteNew);
+        modelo.addRow(new Object []{clienteNew.getQuadra(), clienteNew.getHorario()});
+        modelo.fireTableDataChanged();
 
-            modelo.removeRow(linha);
-            //modelo.addRow(new Object []{clienteNew.getNome(), clienteNew.getTelefone(), clienteNew.getQuadra(), clienteNew.getEsporte(), clienteNew.getHorario(), clienteNew.getQtdHoras(), clienteNew.getFormPag()});
-            modelo.fireTableDataChanged();
-
-            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            //limparCampos();
-            }else{
-                JOptionPane.showMessageDialog(null, "Nenhum cliente selecionado.", "ERRO",JOptionPane.INFORMATION_MESSAGE);
-            }
+        JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
+        limparCampos();
+          
     }//GEN-LAST:event_jButton1ActionPerformed
        
     private void initComponents2(){
-           modelo.addColumn("Nome");
-           modelo.addColumn("qtdHoras");
+           modelo.addColumn("Quadra");
+           modelo.addColumn("Horários");
            
            jTable1.setModel(modelo);
     }
