@@ -41,7 +41,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -77,6 +77,9 @@
       <Properties>
         <Property name="doubleBuffered" type="boolean" value="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -237,20 +240,12 @@
         <Component class="javax.swing.JComboBox" name="comboBoxHorario">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="13">
+              <StringArray count="5">
                 <StringItem index="0" value=" "/>
                 <StringItem index="1" value="8h"/>
                 <StringItem index="2" value="9h"/>
                 <StringItem index="3" value="10h"/>
                 <StringItem index="4" value="11h"/>
-                <StringItem index="5" value="14h"/>
-                <StringItem index="6" value="15h"/>
-                <StringItem index="7" value="16h"/>
-                <StringItem index="8" value="17h"/>
-                <StringItem index="9" value="18h"/>
-                <StringItem index="10" value="19h"/>
-                <StringItem index="11" value="20h"/>
-                <StringItem index="12" value="21h"/>
               </StringArray>
             </Property>
           </Properties>
@@ -259,6 +254,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -430,6 +426,7 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>
           </AuxValues>
         </Component>
       </SubComponents>

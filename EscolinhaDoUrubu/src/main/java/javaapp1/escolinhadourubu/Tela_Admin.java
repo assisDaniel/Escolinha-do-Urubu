@@ -4,13 +4,13 @@
  */
 package javaapp1.escolinhadourubu;
 import javaapp1.domain.Cliente;
-import javaapp1.dao.IClienteDAO;
-import javaapp1.dao.ClienteMapDAO;
 import javaapp1.dao.IAdminDAO;
 import javaapp1.dao.AdminListDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javaapp1.escolinhadourubu.EscolinhaDoUrubu;
+import javaapp1.escolinhadourubu.TelaPrincipal;
 
 /**
  *
@@ -50,6 +50,7 @@ public class Tela_Admin extends javax.swing.JFrame {
         botaoLimpar = new javax.swing.JButton();
         botaoRemover = new javax.swing.JButton();
         botaoAtualizar = new javax.swing.JButton();
+        botaoAplicar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,6 +111,13 @@ public class Tela_Admin extends javax.swing.JFrame {
             }
         });
 
+        botaoAplicar.setText("Aplicar");
+        botaoAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAplicarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,7 +153,9 @@ public class Tela_Admin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(botaoRemover)
                                 .addGap(18, 18, 18)
-                                .addComponent(botaoSalvar)))
+                                .addComponent(botaoSalvar)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoAplicar)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -168,7 +178,8 @@ public class Tela_Admin extends javax.swing.JFrame {
                     .addComponent(botaoSalvar)
                     .addComponent(botaoLimpar)
                     .addComponent(botaoRemover)
-                    .addComponent(botaoAtualizar))
+                    .addComponent(botaoAtualizar)
+                    .addComponent(botaoAplicar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
@@ -287,7 +298,32 @@ public class Tela_Admin extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botaoAtualizarActionPerformed
-       
+
+    private void botaoAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAplicarActionPerformed
+        TelaPrincipal mainWindow= new TelaPrincipal();
+        
+        int result = JOptionPane.showConfirmDialog(this,"Deseja realmente aplicar as alterações? Depois de aplicadas essa janela fechará!", "CUIDADO",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+            if(this.modelo.getValueAt(0, 0).toString() == null){
+                JOptionPane.showMessageDialog(this, "Nada para adicionar!");
+                return;
+            }
+            
+            JOptionPane.showMessageDialog(null, "Itens adicionados com sucesso", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            for(int i=0; i<this.adminDAO.size(); i++){
+                mainWindow.comboBoxQuadra.addItem(this.modelo.getValueAt(i, 0).toString());
+                mainWindow.comboBoxHorario.addItem(this.modelo.getValueAt(i, 1).toString());
+                this.dispose();
+                mainWindow.setVisible(true);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Voltando a janela do admin...", "Negado",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_botaoAplicarActionPerformed
+
+    
     private void initComponents2(){
            modelo.addColumn("Quadra");
            modelo.addColumn("Horários");
@@ -332,6 +368,7 @@ public class Tela_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAplicar;
     private javax.swing.JButton botaoAtualizar;
     private javax.swing.JButton botaoLimpar;
     private javax.swing.JButton botaoRemover;

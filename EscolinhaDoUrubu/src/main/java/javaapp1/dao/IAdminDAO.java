@@ -14,4 +14,5 @@ public interface IAdminDAO {
     public void excluir(Cliente valores);
     public void atualizar(String quadra, String horario, Cliente valores);
     public Cliente buscar(Cliente valores);
+    public int size();
 }

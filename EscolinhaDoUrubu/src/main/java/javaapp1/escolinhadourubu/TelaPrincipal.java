@@ -11,13 +11,16 @@ import javaapp1.dao.IClienteDAO;
 import javaapp1.dao.ClienteMapDAO;
 import javax.swing.JTable;
 import javaapp1.escolinhadourubu.Tela_Admin;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 /**
  *
  * @author daniel
  */
 public class TelaPrincipal extends javax.swing.JFrame{
     public DefaultTableModel modelo= new DefaultTableModel();
-    
+    public JComboBox<String> boxQuadra= new JComboBox<>();
+    public JComboBox<String> boxHorario= new JComboBox<>();
     private IClienteDAO clienteDAO= new ClienteMapDAO();
     /**
      * Creates new form TelaPrincipal
@@ -65,7 +68,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jDesktopPane1.setDoubleBuffered(true);
 
@@ -75,7 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
         jLabel3.setText("Qtd. Horas:");
 
-        comboBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "8h", "9h", "10h", "11h", "14h", "15h", "16h", "17h", "18h", "19h", "20h", "21h" }));
+        comboBoxHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "8h", "9h", "10h", "11h" }));
         comboBoxHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxHorarioActionPerformed(evt);
@@ -357,9 +360,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        dispose();
         Admin admintela = new Admin();
         admintela.setVisible(true);
-        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -572,9 +575,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton botaoUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboBoxFormaPag;
-    private javax.swing.JComboBox<String> comboBoxHorario;
-    private javax.swing.JComboBox<String> comboBoxQuadra;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    protected javax.swing.JComboBox<String> comboBoxHorario;
+    protected javax.swing.JComboBox<String> comboBoxQuadra;
+    protected javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

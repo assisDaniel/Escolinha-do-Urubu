@@ -43,4 +43,8 @@ public class AdminListDAO implements IAdminDAO {
     public Cliente buscar(Cliente valores){
         return this.list.get(list.indexOf(valores));
     }
+    
+    public int size(){
+        return list.size();
+    }
 }
