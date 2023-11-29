@@ -19,8 +19,6 @@ import javax.swing.JComboBox;
  */
 public class TelaPrincipal extends javax.swing.JFrame{
     public DefaultTableModel modelo= new DefaultTableModel();
-    public JComboBox<String> boxQuadra= new JComboBox<>();
-    public JComboBox<String> boxHorario= new JComboBox<>();
     private IClienteDAO clienteDAO= new ClienteMapDAO();
     /**
      * Creates new form TelaPrincipal
