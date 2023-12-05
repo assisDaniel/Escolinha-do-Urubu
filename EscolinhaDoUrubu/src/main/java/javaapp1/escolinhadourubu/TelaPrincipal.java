@@ -22,6 +22,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
     public DefaultTableModel modelo= new DefaultTableModel();
     public IClienteDAO clienteDAO= new ClienteMapDAO();
     static HashMap<String, Cliente> map2= new HashMap<>();
+    static HashMap<String, Double> preços= new HashMap<>();
 
     /**
      * Creates new form TelaPrincipal
@@ -405,9 +406,14 @@ public class TelaPrincipal extends javax.swing.JFrame{
         modelo.addColumn("Horario");
         modelo.addColumn("qtdHoras");
         modelo.addColumn("formpag");
+        modelo.addColumn("Preço");
+        preços.put("Quadra 1", 100.00);
+        preços.put("Quadra 2", 110.00);
+        preços.put("Quadra 3", 120.00);
         
         jTable1.setModel(modelo);
     }
+    
     
     private void botaoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaveActionPerformed
         String nome2= "Nome", telefone2= "Telefone", esporte2= "Esporte", quadra2= "Quadra", horario2= "Horário", qtdHoras2= "Qtd. de Horas", formPag2= "Forma de Pagamento";
@@ -437,10 +443,10 @@ public class TelaPrincipal extends javax.swing.JFrame{
         else horario = comboBoxHorario.getSelectedItem().toString();
         if(horario == null || horario.isEmpty()) notValidCamps.append(horario2+"\n");
         
-        String qtdHoras;
-        if(spinnerQtdHoras.getValue().toString().equals("0")) qtdHoras= null;
-        else qtdHoras= spinnerQtdHoras.getValue().toString();
-        if(qtdHoras == null || qtdHoras.isEmpty()) notValidCamps.append(qtdHoras2+"\n");
+        Integer qtdHoras= 0;
+        if(spinnerQtdHoras.getValue().equals(0)) qtdHoras= 0;
+        else qtdHoras= (Integer)spinnerQtdHoras.getValue();
+        if(qtdHoras.toString()== null || qtdHoras.toString().isEmpty()) notValidCamps.append(qtdHoras2+"\n");
         
         
         String formPag;
@@ -448,19 +454,21 @@ public class TelaPrincipal extends javax.swing.JFrame{
         else formPag = comboBoxFormaPag.getSelectedItem().toString();
         if(formPag == null || formPag.isEmpty()) notValidCamps.append(formPag2+"\n");
         
-        if(!isCamposValidos(nome, telefone, esporte, quadra, horario, qtdHoras, formPag)){
+        if(!isCamposValidos(nome, telefone, esporte, quadra, horario, qtdHoras.toString(), formPag)){
             JOptionPane.showMessageDialog(this, "Existem campos não preenchidos!");
             JOptionPane.showMessageDialog(this, "Campos não preenchidos:\n"+ notValidCamps);
             return;
         }
         
-        Cliente cliente= new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras, formPag);
+        Cliente cliente= new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras.toString(), formPag);
         Boolean isSaved= this.clienteDAO.salvar(cliente);
         map2.put(telefone, cliente);
         
         if(isSaved){
             // Depois de adicionar um cliente com sucesso
-            modelo.addRow(new Object[] {cliente.getNome(), cliente.getTelefone(), cliente.getQuadra(), cliente.getEsporte(), cliente.getHorario(), cliente.getQtdHoras(), cliente.getFormPag()});
+            Double preco= preços.get(quadra);
+            Double result= preco* qtdHoras;
+            modelo.addRow(new Object[] {cliente.getNome(), cliente.getTelefone(), cliente.getQuadra(), cliente.getEsporte(), cliente.getHorario(), cliente.getQtdHoras(), cliente.getFormPag(), result});
             // Notificar a tabela sobre a mudança nos dados
             modelo.fireTableDataChanged();
             limparCampos();

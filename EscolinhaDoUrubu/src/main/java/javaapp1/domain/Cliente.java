@@ -9,7 +9,7 @@ package javaapp1.domain;
  */
 public class Cliente {
     
-    private String nome, telefone, esporte, quadra, horario, formPag;
+    private String nome, telefone, esporte, quadra, horario, formPag, preco;
     private Integer qtdHoras;
     
     public Cliente(){}
@@ -25,6 +25,17 @@ public class Cliente {
         this.horario= horario;
         this.qtdHoras= Integer.valueOf(qtdHoras);
         this.formPag= formPag;
+    }
+    
+    public Cliente(String nome, String telefone, String esporte, String quadra, String horario, String qtdHoras, String formPag, String preco){
+        this.nome= nome;
+        this.telefone= telefone;
+        this.esporte= esporte;
+        this.quadra= quadra;
+        this.horario= horario;
+        this.qtdHoras= Integer.valueOf(qtdHoras);
+        this.formPag= formPag;
+        this.preco= preco;
     }
     
     /**
