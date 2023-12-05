@@ -2,9 +2,13 @@ javaapp1\escolinhadourubu\TelaPrincipal$11.class
 javaapp1\escolinhadourubu\TelaPrincipal$4.class
 javaapp1\escolinhadourubu\TelaPrincipal$9.class
 javaapp1\escolinhadourubu\Tela_Admin$6.class
+javaapp1\escolinhadourubu\Tela_Admin$10.class
 javaapp1\escolinhadourubu\TelaPrincipal$2.class
 javaapp1\escolinhadourubu\TelaPrincipal$6.class
+javaapp1\escolinhadourubu\Tela_Admin$9.class
+javaapp1\escolinhadourubu\Tela_Busca.class
 javaapp1\escolinhadourubu\Admin.class
+javaapp1\escolinhadourubu\Tela_Busca$1.class
 javaapp1\escolinhadourubu\Tela_Admin$4.class
 javaapp1\escolinhadourubu\Admin$1.class
 javaapp1\domain\Cliente.class
@@ -23,6 +27,7 @@ javaapp1\dao\IClienteDAO.class
 javaapp1\escolinhadourubu\Tela_Admin$2.class
 javaapp1\escolinhadourubu\Sobre$1.class
 javaapp1\escolinhadourubu\Tela_Admin$7.class
+javaapp1\escolinhadourubu\Tela_Busca$2.class
 javaapp1\escolinhadourubu\TelaPrincipal$15.class
 javaapp1\dao\ClienteMapDAO.class
 javaapp1\escolinhadourubu\TelaPrincipal$14.class

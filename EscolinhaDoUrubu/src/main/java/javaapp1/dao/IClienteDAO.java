@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package javaapp1.dao;
+import java.util.HashMap;
 import javaapp1.domain.Cliente;
 /**
  *
@@ -14,4 +15,5 @@ public interface IClienteDAO {
     public void excluir(String telefone);
     public void atualizar(String telefone, Cliente cliente);
     public Cliente buscar(String telefone);
+    public Boolean exists(String telefone);
 }

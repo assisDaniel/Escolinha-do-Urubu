@@ -9,7 +9,7 @@ package javaapp1.domain;
  */
 public class Cliente {
     
-    private String nome, telefone, esporte, quadra, horario, formPag, senha;
+    private String nome, telefone, esporte, quadra, horario, formPag;
     private Integer qtdHoras;
     
     public Cliente(){}
@@ -25,7 +25,6 @@ public class Cliente {
         this.horario= horario;
         this.qtdHoras= Integer.valueOf(qtdHoras);
         this.formPag= formPag;
-        this.senha = senha;
     }
     
     /**
@@ -125,12 +124,4 @@ public class Cliente {
     public void setQtdHoras(int qtdHoras) {
         this.qtdHoras = qtdHoras;
     }  
-    
-    public String getSenha(){
-        return senha;
-    }
-    
-    public void setSenha(){
-        this.senha = senha;
-    }
 }

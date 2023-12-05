@@ -4,6 +4,7 @@
  */
 package javaapp1.escolinhadourubu;
 
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javaapp1.domain.Cliente;
@@ -19,7 +20,9 @@ import javax.swing.JComboBox;
  */
 public class TelaPrincipal extends javax.swing.JFrame{
     public DefaultTableModel modelo= new DefaultTableModel();
-    private IClienteDAO clienteDAO= new ClienteMapDAO();
+    public IClienteDAO clienteDAO= new ClienteMapDAO();
+    static HashMap<String, Cliente> map2= new HashMap<>();
+
     /**
      * Creates new form TelaPrincipal
      */
@@ -407,36 +410,53 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }
     
     private void botaoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSaveActionPerformed
+        String nome2= "Nome", telefone2= "Telefone", esporte2= "Esporte", quadra2= "Quadra", horario2= "Horário", qtdHoras2= "Qtd. de Horas", formPag2= "Forma de Pagamento";
+        StringBuilder notValidCamps= new StringBuilder();
+        
         String nome= txtNome.getText();
+        if(nome == null || nome.isEmpty()) notValidCamps.append(nome2+"\n");
+        
         String telefone= txtTelefone.getText();
+        if(telefone == null || telefone.isEmpty()) notValidCamps.append(telefone2+"\n");
+
         String esporte= null;
         if(botaoFut.isSelected()) esporte= botaoFut.getText();
         if (botaoFutVo.isSelected()) esporte= botaoFutVo.getText();
+        if(esporte == null || esporte.isEmpty()) notValidCamps.append(esporte2+"\n");
+
         
         String quadra;
         if(comboBoxQuadra.getSelectedIndex() == 0){
             quadra= null;
         }else quadra= comboBoxQuadra.getSelectedItem().toString();
+        if(quadra == null || quadra.isEmpty()) notValidCamps.append(quadra2+"\n");
+
         
         String horario;
         if(comboBoxHorario.getSelectedIndex() == 0) horario= null;
         else horario = comboBoxHorario.getSelectedItem().toString();
+        if(horario == null || horario.isEmpty()) notValidCamps.append(horario2+"\n");
         
         String qtdHoras;
         if(spinnerQtdHoras.getValue().toString().equals("0")) qtdHoras= null;
         else qtdHoras= spinnerQtdHoras.getValue().toString();
+        if(qtdHoras == null || qtdHoras.isEmpty()) notValidCamps.append(qtdHoras2+"\n");
+        
         
         String formPag;
         if(comboBoxFormaPag.getSelectedIndex() == 0) formPag= null;
         else formPag = comboBoxFormaPag.getSelectedItem().toString();
+        if(formPag == null || formPag.isEmpty()) notValidCamps.append(formPag2+"\n");
         
         if(!isCamposValidos(nome, telefone, esporte, quadra, horario, qtdHoras, formPag)){
             JOptionPane.showMessageDialog(this, "Existem campos não preenchidos!");
+            JOptionPane.showMessageDialog(this, "Campos não preenchidos:\n"+ notValidCamps);
             return;
         }
         
         Cliente cliente= new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras, formPag);
         Boolean isSaved= this.clienteDAO.salvar(cliente);
+        map2.put(telefone, cliente);
         
         if(isSaved){
             // Depois de adicionar um cliente com sucesso
@@ -476,23 +496,54 @@ public class TelaPrincipal extends javax.swing.JFrame{
         int linha = jTable1.getSelectedRow();
         
         if(linha >= 0){
-            String telefone = txtTelefone.getText();
-            String nome = txtNome.getText();
-            String esporte;
-            if(botaoFut.isSelected()) esporte= botaoFut.getText();
-            else esporte= botaoFutVo.getText();
-            String quadra= comboBoxQuadra.getSelectedItem().toString();
-            String horario = comboBoxHorario.getSelectedItem().toString();
-            String qtdHoras= spinnerQtdHoras.getValue().toString();
-            String formPag = comboBoxFormaPag.getSelectedItem().toString();
+             String nome2= "Nome", telefone2= "Telefone", esporte2= "Esporte", quadra2= "Quadra", horario2= "Horário", qtdHoras2= "Qtd. de Horas", formPag2= "Forma de Pagamento";
+        StringBuilder notValidCamps= new StringBuilder();
+        
+        String nome= txtNome.getText();
+        if(nome == null || nome.isEmpty()) notValidCamps.append(nome2+"\n");
+        
+        String telefone= txtTelefone.getText();
+        if(telefone == null || telefone.isEmpty()) notValidCamps.append(telefone2+"\n");
+
+        String esporte= null;
+        if(botaoFut.isSelected()) esporte= botaoFut.getText();
+        if (botaoFutVo.isSelected()) esporte= botaoFutVo.getText();
+        if(esporte == null || esporte.isEmpty()) notValidCamps.append(esporte2+"\n");
+
+        
+        String quadra;
+        if(comboBoxQuadra.getSelectedIndex() == 0){
+            quadra= null;
+        }else quadra= comboBoxQuadra.getSelectedItem().toString();
+        if(quadra == null || quadra.isEmpty()) notValidCamps.append(quadra2+"\n");
+
+        
+        String horario;
+        if(comboBoxHorario.getSelectedIndex() == 0) horario= null;
+        else horario = comboBoxHorario.getSelectedItem().toString();
+        if(horario == null || horario.isEmpty()) notValidCamps.append(horario2+"\n");
+        
+        String qtdHoras;
+        if(spinnerQtdHoras.getValue().toString().equals("0")) qtdHoras= null;
+        else qtdHoras= spinnerQtdHoras.getValue().toString();
+        if(qtdHoras == null || qtdHoras.isEmpty()) notValidCamps.append(qtdHoras2+"\n");
+        
+        
+        String formPag;
+        if(comboBoxFormaPag.getSelectedIndex() == 0) formPag= null;
+        else formPag = comboBoxFormaPag.getSelectedItem().toString();
+        if(formPag == null || formPag.isEmpty()) notValidCamps.append(formPag2+"\n");
         
             if(!isCamposValidos(nome, esporte, quadra, horario, qtdHoras, formPag)){
                 JOptionPane.showMessageDialog(this, "Faltam preencher campos obrigatórios");
+                JOptionPane.showMessageDialog(this, "Campos não preenchidos:\n"+notValidCamps);
                 return;
             }
 
             Cliente clienteNew = new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras, formPag);
             this.clienteDAO.atualizar(jTable1.getValueAt(linha, 1).toString(), clienteNew);
+            map2.put(telefone, clienteNew);
+
             
             modelo.removeRow(linha);
             modelo.addRow(new Object []{clienteNew.getNome(), clienteNew.getTelefone(), clienteNew.getQuadra(), clienteNew.getEsporte(), clienteNew.getHorario(), clienteNew.getQtdHoras(), clienteNew.getFormPag()});
@@ -525,6 +576,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_botaoRemoveActionPerformed
 
+    
     private void comboBoxQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxQuadraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxQuadraActionPerformed

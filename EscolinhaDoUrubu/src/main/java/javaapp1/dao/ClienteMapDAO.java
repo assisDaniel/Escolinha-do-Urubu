@@ -14,11 +14,12 @@ import javax.swing.JOptionPane;
  * @author daniel
  */
 public class ClienteMapDAO implements IClienteDAO{
-    private Map<String, Cliente> map;
+    private HashMap<String, Cliente> map;
     
     public ClienteMapDAO(){
         map= new HashMap<>();
     }
+    
     
     public Boolean salvar(Cliente cliente){
          if(map.containsKey(cliente.getTelefone())) {
@@ -51,5 +52,9 @@ public class ClienteMapDAO implements IClienteDAO{
     
     public Cliente buscar(String telefone){
         return this.map.get(telefone);
+    }
+    
+    public Boolean exists(String telefone){
+        return this.map.containsKey(telefone);
     }
 }
