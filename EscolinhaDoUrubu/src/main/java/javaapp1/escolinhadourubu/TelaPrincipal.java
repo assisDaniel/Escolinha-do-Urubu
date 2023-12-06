@@ -460,14 +460,17 @@ public class TelaPrincipal extends javax.swing.JFrame{
             return;
         }
         
-        Cliente cliente= new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras.toString(), formPag);
+     
+        
+        Double preco= preços.get(quadra);
+        Double result= preco* qtdHoras;
+        Cliente cliente= new Cliente(nome, telefone, esporte, quadra, horario, qtdHoras.toString(), formPag, result);
         Boolean isSaved= this.clienteDAO.salvar(cliente);
         map2.put(telefone, cliente);
         
         if(isSaved){
             // Depois de adicionar um cliente com sucesso
-            Double preco= preços.get(quadra);
-            Double result= preco* qtdHoras;
+            
             modelo.addRow(new Object[] {cliente.getNome(), cliente.getTelefone(), cliente.getQuadra(), cliente.getEsporte(), cliente.getHorario(), cliente.getQtdHoras(), cliente.getFormPag(), result});
             // Notificar a tabela sobre a mudança nos dados
             modelo.fireTableDataChanged();
@@ -584,6 +587,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_botaoRemoveActionPerformed
 
+    public Double lucroTotal(){
+        Double soma=0.0;
+        for(Cliente cliente: map2.values()){
+            soma+= cliente.getPreco();
+        }
+        return soma;
+    }
     
     private void comboBoxQuadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxQuadraActionPerformed
         // TODO add your handling code here:

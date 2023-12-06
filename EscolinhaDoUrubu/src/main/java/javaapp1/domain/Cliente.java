@@ -9,13 +9,15 @@ package javaapp1.domain;
  */
 public class Cliente {
     
-    private String nome, telefone, esporte, quadra, horario, formPag, preco;
+    private String nome, telefone, esporte, quadra, horario, formPag;
+    private Double preco;
     private Integer qtdHoras;
     
     public Cliente(){}
-    public Cliente(String quadra, String horario){
+    public Cliente(String quadra, String horario, Double preco){
         this.quadra= quadra;
         this.horario= horario;
+        this.preco= preco;
     }
     public Cliente(String nome, String telefone, String esporte, String quadra, String horario, String qtdHoras, String formPag){
         this.nome= nome;
@@ -27,7 +29,7 @@ public class Cliente {
         this.formPag= formPag;
     }
     
-    public Cliente(String nome, String telefone, String esporte, String quadra, String horario, String qtdHoras, String formPag, String preco){
+    public Cliente(String nome, String telefone, String esporte, String quadra, String horario, String qtdHoras, String formPag, Double preco){
         this.nome= nome;
         this.telefone= telefone;
         this.esporte= esporte;
@@ -135,4 +137,13 @@ public class Cliente {
     public void setQtdHoras(int qtdHoras) {
         this.qtdHoras = qtdHoras;
     }  
+    
+    
+    public Double getPreco(){
+        return this.preco;
+    }
+    
+    public void setPreco(Double preco){
+        this.preco= preco;
+    }
 }

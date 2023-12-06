@@ -31,13 +31,14 @@ public class AdminListDAO implements IAdminDAO {
         if(list.contains(valores)) list.remove(valores);
     }
     
-    public void atualizar(String quadra, String horario, Cliente valores){
+    public void atualizar(String quadra, String horario, Double preco, Cliente valores){
         Cliente clienteCadastrado= new Cliente();
-        Cliente temp= new Cliente(quadra, horario);
+        Cliente temp= new Cliente(quadra, horario, preco);
         list.remove(temp);
         
         clienteCadastrado.setQuadra(valores.getQuadra());
         clienteCadastrado.setQuadra(valores.getHorario());
+        clienteCadastrado.setPreco(valores.getPreco());
     }
     
     public Cliente buscar(Cliente valores){
